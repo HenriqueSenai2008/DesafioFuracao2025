@@ -1,24 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="">
     <title>Mercadinho</title>
 </head>
+
 <body>
-    <h1>Mercadinho do Juninho</h1>
-    <div class="caixa">
-        <input type="text" name="Produtos">
-        <ul>
-            <li>
-            </li>
-        </ul>
-        <script>
-            let Produtos;
-            let codigoProdutos = parseInt(prompt("Insira os codígos dos produtos"));
-            let quantidade = parseInt;
-            let valorProdutos = parseInt;
-        </script>
+<script>
+    let menu;
+    let quantidade;
+    let valorUnitario;
+    let valorTotal;
+    let nomeProdutos;
+    let continuar;
+    let notaFiscal = []; // Aqui guardamos os produtos
+
+    do {
+        menu = prompt("Escolha um produto:\n1. Arroz\n2. Feijão\n3. Pão\n4. Presunto\n5. Queijo\n6. Leite\n7. Carne\n8. Ovos");
+
+        switch (menu) {
+            case "1":
+                nomeProdutos = "Arroz";
+                valorUnitario = 12.90;
+                break;
+            case "2":
+                nomeProdutos = "Feijão";
+                valorUnitario = 7.90;
+                break;
+            case "3":
+                nomeProdutos = "Pão";
+                valorUnitario = 0.80;
+                break;
+            case "4":
+                nomeProdutos = "Presunto";
+                valorUnitario = 2.90;
+                break;
+            case "5":
+                nomeProdutos = "Queijo";
+                valorUnitario = 3.40;
+                break;
+            case "6":
+                nomeProdutos = "Leite";
+                valorUnitario = 4.50;
+                break;
+            case "7":
+                nomeProdutos = "Carne";
+                valorUnitario = 20.90;
+                break;
+            case "8":
+                nomeProdutos = "Ovos";
+                valorUnitario = 14.00;
+                break;
+            default:
+                alert("Produto inválido.");
+                continue;
+        }
+
+        quantidade = parseInt(prompt("Insira a quantidade"));
+
+        if (!isNaN(quantidade) && quantidade > 0) {
+            valorTotal = valorUnitario * quantidade;
+
+            notaFiscal.push({
+                nome: nomeProdutos,
+                preco: valorUnitario,
+                quantidade: quantidade,
+                total: valorTotal
+            });
+
+            alert(`Você comprou ${quantidade} unidade(s) de ${nomeProdutos} por R$${valorUnitario.toFixed(2)} cada.`);
+        } else {
+            alert("Quantidade inválida.");
+        }
+
+        continuar = prompt("Deseja comprar mais algo? (sim/não)").toLowerCase();
+    } while (continuar === "sim");
+
+    let notaTexto = "------ NOTA FISCAL ------\n";
+    let totalGeral = 0;
+
+    notaFiscal.forEach(item => {
+        notaTexto += `${item.nome} - R$${item.preco.toFixed(2)} x ${item.quantidade} = R$${item.total.toFixed(2)}\n`;
+        totalGeral += item.total;
+    });
+
+    notaTexto += "\nTOTAL GERAL: R$" + totalGeral.toFixed(2);
+    alert(notaTexto);
+</script>
 </body>
+
 </html>
