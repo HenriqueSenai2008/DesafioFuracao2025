@@ -1,95 +1,101 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Mercadinho</title>
+    <title>Mercado do Henrique</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
-<script>
-    let menu;
-    let quantidade;
-    let valorUnitario;
-    let valorTotal;
-    let nomeProdutos;
-    let continuar;
-    let notaFiscal = []; // Aqui guardamos os produtos
 
-    do {
-        menu = prompt("Escolha um produto:\n1. Arroz\n2. Feijão\n3. Pão\n4. Presunto\n5. Queijo\n6. Leite\n7. Carne\n8. Ovos");
+    <header>
+        <h1>Mercado do Henrique</h1>
+        <p>Qualidade, tradição e carinho no seu dia a dia.</p>
+    </header>
 
-        switch (menu) {
-            case "1":
-                nomeProdutos = "Arroz";
-                valorUnitario = 12.90;
-                break;
-            case "2":
-                nomeProdutos = "Feijão";
-                valorUnitario = 7.90;
-                break;
-            case "3":
-                nomeProdutos = "Pão";
-                valorUnitario = 0.80;
-                break;
-            case "4":
-                nomeProdutos = "Presunto";
-                valorUnitario = 2.90;
-                break;
-            case "5":
-                nomeProdutos = "Queijo";
-                valorUnitario = 3.40;
-                break;
-            case "6":
-                nomeProdutos = "Leite";
-                valorUnitario = 4.50;
-                break;
-            case "7":
-                nomeProdutos = "Carne";
-                valorUnitario = 20.90;
-                break;
-            case "8":
-                nomeProdutos = "Ovos";
-                valorUnitario = 14.00;
-                break;
-            default:
-                alert("Produto inválido.");
-                continue;
-        }
+    <section class="sobre-nos">
+        <h2>Sobre nós</h2>
+        <p>
+            Fundado em 1995, o <strong>Mercado do Henrique</strong> nasceu do sonho de um jovem apaixonado por atender bem sua comunidade.
+            Henrique começou vendendo frutas na calçada, com um carrinho de mão e muita dedicação. Com o tempo, conquistou a confiança
+            dos vizinhos, cresceu e transformou aquele pequeno carrinho em um dos mercados mais queridos do bairro.
+            <br><br>
+            Nosso compromisso sempre foi oferecer produtos de qualidade, atendimento caloroso e preços justos. Mais que um mercado,
+            somos parte da história e da mesa das famílias que confiam no nosso trabalho. Seja bem-vindo ao Mercado do Henrique,
+            onde tradição e carinho se encontram!
+        </p>
+    </section>
 
-        quantidade = parseInt(prompt("Insira a quantidade"));
+    <section class="catalogo">
+        <h2>Nosso Catálogo</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="arroz.png.png" alt="Arroz">
+                <h3>Arroz</h3>
+                <p>Arroz tipo 1, pacote de 5kg. Qualidade garantida.</p>
+                <p><strong>R$12,90</strong></p>
+                <button onclick="adicionarProduto('Arroz', 12.90)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="feijao.png.png" alt="Feijão">
+                <h3>Feijão</h3>
+                <p>Feijão carioca 1kg, direto do campo.</p>
+                <p><strong>R$7,90</strong></p>
+                <button onclick="adicionarProduto('Feijão', 7.90)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="pao.png.jpg" alt="Pão">
+                <h3>Pão</h3>
+                <p>Pão francês fresquinho. Preço por unidade.</p>
+                <p><strong>R$0,80</strong></p>
+                <button onclick="adicionarProduto('Pão', 0.80)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="presunto.png.jpg" alt="Presunto">
+                <h3>Presunto</h3>
+                <p>Presunto fatiado de primeira qualidade. 100g.</p>
+                <p><strong>R$2,90</strong></p>
+                <button onclick="adicionarProduto('Presunto', 2.90)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="mussarela.png" alt="Queijo">
+                <h3>Queijo</h3>
+                <p>Queijo mussarela, fatiado. 100g.</p>
+                <p><strong>R$3,40</strong></p>
+                <button onclick="adicionarProduto('Queijo', 3.40)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="leite.png" alt="Leite">
+                <h3>Leite</h3>
+                <p>Leite integral 1L. Direto da fazenda.</p>
+                <p><strong>R$4,50</strong></p>
+                <button onclick="adicionarProduto('Leite', 4.50)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="carne.png.jpg" alt="Carne">
+                <h3>Carne</h3>
+                <p>Carne bovina de primeira. 1kg.</p>
+                <p><strong>R$20,90</strong></p>
+                <button onclick="adicionarProduto('Carne', 20.90)">Adicionar</button>
+            </div>
+            <div class="produto">
+                <img src="ovo.png.jpg" alt="Ovos">
+                <h3>Ovos</h3>
+                <p>Bandeja com 12 ovos caipiras.</p>
+                <p><strong>R$14,00</strong></p>
+                <button onclick="adicionarProduto('Ovos', 14.00)">Adicionar</button>
+            </div>
+        </div>
+    </section>
 
-        if (!isNaN(quantidade) && quantidade > 0) {
-            valorTotal = valorUnitario * quantidade;
+    <section id="notaFiscal">
+        <h2>Nota Fiscal</h2>
+        <div id="listaProdutos"></div>
+        <p><strong>Total Geral:</strong> R$<span id="totalGeral">0.00</span></p>
+    </section>
 
-            notaFiscal.push({
-                nome: nomeProdutos,
-                preco: valorUnitario,
-                quantidade: quantidade,
-                total: valorTotal
-            });
-
-            alert(`Você comprou ${quantidade} unidade(s) de ${nomeProdutos} por R$${valorUnitario.toFixed(2)} cada.`);
-        } else {
-            alert("Quantidade inválida.");
-        }
-
-        continuar = prompt("Deseja comprar mais algo? (sim/não)").toLowerCase();
-    } while (continuar === "sim");
-
-    let notaTexto = "------ NOTA FISCAL ------\n";
-    let totalGeral = 0;
-
-    notaFiscal.forEach(item => {
-        notaTexto += `${item.nome} - R$${item.preco.toFixed(2)} x ${item.quantidade} = R$${item.total.toFixed(2)}\n`;
-        totalGeral += item.total;
-    });
-
-    notaTexto += "\nTOTAL GERAL: R$" + totalGeral.toFixed(2);
-    alert(notaTexto);
-</script>
+    <script src="script.js"></script>
 </body>
 
 </html>
